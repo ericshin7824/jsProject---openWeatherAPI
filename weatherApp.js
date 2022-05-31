@@ -1,76 +1,38 @@
-window.addEventListener('load', () => {
-    let long;
-    let lat;
+let weather = {
+    API_KEY: 'd63b30fa31309086449cd34ea984b57e',
+    fetchWeather: function (city) {
+        fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric&appid=' + this.API_KEY)
+            .then((response) => response.json())
+            .then((data) => this.displayWeather(data));
+    },
+    displayWeather: function (data) {
+        const { name } = data;
+        const { icon, description } = data.weather[0];
+        const { temp, humidity } = data.main;
+        const { speed } = data.wind;
+        document.querySelector('.city').innerText = name;
+        document.querySelector('.icon').src = 'https://openweathermap.org/img/wn/' + icon.slice(0, -1) + 'd.png';
+        document.querySelector('.description').innerText = description;
+        document.querySelector('.temp').innerText = temp + ' ℃';
+        document.querySelector('.humidity').innerText = humidity + ' %';
+        document.querySelector('.wind').innerText = speed + ' km/h';
+        document.querySelector('.weather').classList.remove('loading');
+        // console.log(icon);
+        // console.log(icon.slice(0, -1));
+    },
+    search: function () {
+        this.fetchWeather(document.querySelector('.search-bar').value);
+    },
+};
 
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
-            console.log(position);
-        });
-    }
-    // else {
-    //     //message for location
-    // }
+document.querySelector('.search button').addEventListener('click', function () {
+    weather.search();
 });
-// console.log('aaa');
 
-// const timeEl = document.getElementById('time');
-// const dateEl = document.getElementById('date');
-// const currentWeatherItemsEl = document.getElementById('current-weather-items');
-// const timezone = document.getElementById('time-zone');
-// const countyEl = document.getElementById('county');
-// const weatherForecastEl = document.getElementById('weather-forecast');
-// const currentTempEl = document.getElementById('current-temp');
+document.querySelector('.search-bar').addEventListener('keyup', function (e) {
+    if (e.key == 'Enter') {
+        weather.search();
+    }
+});
 
-// const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-// const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
-// const API_KEY = 'd63b30fa31309086449cd34ea984b57e';
-
-// setInterval(() => {
-//     const time = new Date();
-//     const month = time.getMonth();
-//     const date = time.getDate();
-//     const day = time.getDay();
-//     const hour = time.getHours();
-//     const hoursIn12HrFormat = hour >= 13 ? hour % 12 : hour;
-//     const minutes = time.getMinutes();
-//     const ampm = hour >= 12 ? 'PM' : 'AM';
-
-//     timeEl.innerHTML = hoursIn12HrFormat + ':' + minutes + ' ' + `<span id="am-pm">${ampm}</span>`;
-
-//     dateEl.innerHTML = days[day] + ', ' + date + ' ' + months[month];
-// }, 1000);
-
-// getWeatherData();
-// function getWeatherData() {
-//     navigator.geolocation.getCurrentPosition((success) => {
-//         console.log(success);
-
-//         let { latitude, longitude } = success.coords;
-
-//         fetch(
-//             `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&appid=${API_KEY}`
-//         )
-//             .then((res) => res.json())
-//             .then((data) => {
-//                 console.log(data);
-//             });
-//     });
-// }
-
-// getWeatherData();
-// function getWeatherData() {
-//     navigator.geolocation.getCurrentPosition((success) => {
-//         console.log(success);
-
-//         let { latitude, longitude } = success.coords;
-
-//         fetch(
-//             `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&appid=${API_KEY}`
-//         )
-//             .then((res) => res.json())
-//             .then((data) => {
-//                 console.log(data);
-//             });
-//     });
-// }
+weather.fetchWeather('California');

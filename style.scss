@@ -1,39 +1,9 @@
 :root {
     @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-    // @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-    // font-family: 'Lato', sans-serif;
-
-    // @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-    // font-family: 'Montserrat', sans-serif;
-
-    // @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
-    // font-family: 'Oswald', sans-serif;
-
-    // @import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
-    // font-family: 'Monoton', cursive;
-
-    // @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
-    // font-family: 'Black Ops One', cursive;
-
-    // @import url('https://fonts.googleapis.com/css2?family=Montserrat+Subrayada:wght@400;700&display=swap');
-    // font-family: 'Montserrat Subrayada', sans-serif;
-
-    // @import url('https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap');
-    // font-family: 'Saira Stencil One', cursive;
-
-    // @import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&display=swap');
-    // font-family: 'Libre Barcode 39 Text', cursive;
-    // @import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Extended+Text&display=swap');
-    // font-family: 'Libre Barcode 39 Extended Text', cursive;
-    // @import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Extended&display=swap');
-    // font-family: 'Libre Barcode 39 Extended', cursive;
-
-    // @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap');
-    // font-family: 'Noto Sans JP', sans-serif;
 
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
-    line-height: 1.85;
+    // line-height: 1.85;
     // text-align: left;
 
     --primary-color-dark: rgba(25, 25, 25, 1);
@@ -126,212 +96,131 @@ $font-size-38: var(--font-size-40);
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
 }
 
 body {
-    background: linear-gradient(rgba(47, 150, 163, 1), rgba(48, 62, 143, 1));
+    background-color: #555;
+    background-image: url(./weatherAppBG.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: overlay;
     height: 100vh;
-    color: $primary-white;
+
+    font-family: 'Montserrat', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
 }
-
-.location,
-.temperature {
-    width: 50%;
-    height: 30vh;
+.card {
+    background: rgba(0, 0, 0, 0.6);
+    padding: var(--space-20) var(--space-40);
+    color: var(--primary-color-light);
+    border-radius: 25px;
 
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-.temperature {
     flex-direction: column;
+    gap: var(--space-20);
+
+    box-shadow: 5px 10px 20px 0 rgba(0, 0, 0, 0.4);
 }
-.degree-section {
+.search {
+    background-color: rgba(75, 75, 75, 1);
+    padding: var(--space-10);
+    border-radius: 25px;
+    font-size: var(--font-size-16);
     display: flex;
     align-items: center;
-    cursor: pointer;
-    h2 {
-        font-size: $font-size-38;
+    justify-content: center;
+    gap: var(--space-5);
+
+    .search-bar,
+    button {
+        border: none;
+        outline: none;
+    }
+    .search-bar {
+        width: 100%;
+        padding: var(--space-10) var(--space-20);
+        border-radius: var(--space-15);
+        color: var(--primary-color-dark);
+    }
+    button {
+        background: var(--primary-color-light);
+        padding: var(--space-10);
+        border-radius: 50%;
+        cursor: pointer;
+        i {
+            color: var(--primary-color-dark);
+        }
+    }
+}
+
+.title {
+    h1 {
+        font-size: var(--font-size-32);
     }
     span {
-        margin: var(--space-10);
-        font-size: $font-size-32;
+        font-size: var(--font-size-12);
     }
 }
 
-// * {
-//     box-sizing: border-box;
-//     margin: 0;
-//     padding: 0;
-// }
+.weather {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-20);
+    .weather-box,
+    .detail-box {
+        background-color: rgba(75, 75, 75, 0.6);
+        flex-basis: calc(100% - var(--space-10));
+        padding: var(--space-10);
+        border-radius: var(--space-15);
+        white-space: nowrap;
+        display: flex;
+        gap: var(--space-10);
+    }
+    .weather-box {
+        align-items: center;
+        justify-content: start;
+        .icon-box {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            .description {
+                text-transform: capitalize;
+            }
+        }
+    }
+    .detail-box {
+        padding: 20px;
+        align-items: flex-start;
+        flex-direction: column;
+    }
 
-// body {
-//     background: url(./weatherAppBG.jpg);
-//     background-repeat: no-repeat;
-//     background-size: cover;
-//     overflow: hidden;
-//     height: 100vh;
-// }
+    &.loading {
+        position: relative;
+        visibility: hidden;
+        &::after {
+            content: 'Loading...';
+            position: absolute;
+            top: 0;
+            color: var(--primary-color-light);
+            visibility: visible;
+        }
+    }
+}
 
-// .container {
-//     padding: var(--space-20) var(--space-80);
-//     color: $primary-white;
-// }
-
-// .current-info {
-//     display: flex;
-//     justify-content: space-between;
-//     flex-wrap: wrap;
-// }
-// .date-container {
-//     font-weight: 200;
-//     .time {
-//         font-size: var(--font-size-72);
-//     }
-//     .date {
-//         font-size: var(--font-size-32);
-//     }
-//     #am-pm {
-//         font-size: var(--font-size-32);
-//         margin-left: var(--space-20);
-//     }
-// }
-
-// .place-container {
-//     text-align: end;
-//     .time-zone {
-//         font-size: var(--font-size-32);
-//         font-weight: 200;
-//     }
-//     .county {
-//         font-size: var(--font-size-12);
-//         font-weight: 700;
-//     }
-// }
-// .current-info {
-//     .others {
-//         background: rgba(25, 25, 25, 0.6);
-//         padding: var(--space-20);
-//         margin: var(--space-10) 0;
-//         border: 1px solid $primary-darker-white;
-//         border-radius: $border-radi-s;
-
-//         display: flex;
-//         flex-direction: column;
-//         .weather-item {
-//             display: flex;
-//             justify-content: space-between;
-//         }
-//     }
-// }
-
-// .future-forecast {
-//     position: fixed;
-//     bottom: 0;
-//     left: 0;
-
-//     background: rgba(35, 35, 35, 0.8);
-//     width: 100%;
-//     padding: var(--space-30);
-//     color: $primary-white;
-
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     .today {
-//         display: flex;
-//         justify-content: center;
-//         align-items: center;
-//         .day {
-//             background: $primary-darker-gray;
-//             padding: var(--space-5) var(--space-15);
-//             border-radius: $border-radi-xl;
-//             text-align: center;
-//         }
-//         .temp {
-//             font-size: var(--font-size-20);
-//             padding-top: var(--space-15);
-//         }
-//     }
-
-//     .weather-forecast {
-//         display: flex;
-//         .weather-forecast-item {
-//             padding: var(--space-15);
-//             margin: 0 var(--space-10);
-//             border: 1px solid $primary-darker-white;
-//             border-radius: $border-radi-s;
-
-//             display: flex;
-//             flex-direction: column;
-//             justify-content: center;
-//             align-items: center;
-
-//             .day {
-//                 background: $primary-darker-gray;
-//                 padding: var(--space-5) var(--space-10);
-//                 border-radius: $border-radi-xl;
-//                 text-align: center;
-//             }
-//             .temp {
-//                 font-weight: 200;
-//             }
-//         }
-//     }
-// }
-
-// @media only screen and (max-width: 45rem) {
-//     body {
-//         line-height: 1.2;
-//     }
-//     .container {
-//         padding: var(--space-20);
-//     }
-//     .date-container {
-//         .time {
-//             font-size: var(--font-size-48);
-//         }
-//         .date {
-//             font-size: var(--font-size-20);
-//         }
-//         #am-pm {
-//             font-size: var(--font-size-20);
-//         }
-//     }
-//     .current-info {
-//         flex-wrap: nowrap;
-//         .date-container {
-//             .others {
-//                 .weather-item {
-//                     column-gap: var(--space-60);
-//                 }
-//             }
-//         }
-//     }
-//     .place-container {
-//         text-align: end;
-//         margin-top: var(--space-15);
-//     }
-
-//     .future-forecast {
-//         justify-content: start;
-//         align-items: none;
-//         overflow-y: scroll;
-//         padding: var(--space-20);
-//         .today {
-//             padding: var(--space-15);
-//             border: 1px solid $primary-darker-white;
-//             border-radius: $border-radi-s;
-
-//             justify-content: space-between;
-//             .temp {
-//                 font-size: var(--font-size-24);
-//             }
-//         }
-//     }
-// }
+@media only screen and (max-width: 35rem) {
+    .weather {
+        .weather-box,
+        .detail-box {
+            background-color: rgba(75, 75, 75, 0.6);
+            flex-basis: calc(100% - var(--space-10));
+            padding: var(--space-10);
+            border-radius: var(--space-15);
+            white-space: nowrap;
+            display: flex;
+            gap: var(--space-10);
+        }
+    }
+}
