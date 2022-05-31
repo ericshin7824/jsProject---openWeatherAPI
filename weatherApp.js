@@ -13,9 +13,9 @@ let weather = {
         document.querySelector('.city').innerText = name;
         document.querySelector('.icon').src = 'https://openweathermap.org/img/wn/' + icon.slice(0, -1) + 'd.png';
         document.querySelector('.description').innerText = description;
-        document.querySelector('.temp').innerText = temp + ' ℃';
-        document.querySelector('.humidity').innerText = humidity + ' %';
-        document.querySelector('.wind').innerText = speed + ' km/h';
+        document.querySelector('.temp').innerText = temp;
+        document.querySelector('.humidity').innerText = humidity;
+        document.querySelector('.wind').innerText = speed;
         document.querySelector('.weather').classList.remove('loading');
         // console.log(icon);
         // console.log(icon.slice(0, -1));

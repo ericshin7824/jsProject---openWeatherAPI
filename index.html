@@ -9,33 +9,38 @@
         <script src="https://kit.fontawesome.com/2310046e07.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        <div class="card">
-            <div class="title">
-                <span>Weather in :</span>
-                <h1 class="city">Los Angeles</h1>
-            </div>
+        <nav>
+            <a class="logo" href="https://www.erichoonshin.com/">Hn.</a>
+        </nav>
+        <main class="card">
             <div class="search">
-                <input type="text" class="search-bar" />
+                <input class="search-bar" type="text" placeholder="ex) Los Angeles" />
                 <button><i class="fas fa-search"></i></button>
             </div>
             <div class="weather loading">
-                <div class="weather-box">
-                    <img class="icon" src="https://openweathermap.org/img/wn/02d.png" alt="" />
-                    <div class="icon-box">
-                        <span class="temp">51℃</span>
-                        <div class="description">Cloudy</div>
+                <div class="title">
+                    <span>Weather in :</span>
+                    <h1 class="city">Los Angeles</h1>
+                </div>
+                <article class="detail-container">
+                    <div class="weather-box">
+                        <img class="icon" src="https://openweathermap.org/img/wn/02d.png" alt="" />
+                        <div class="icon-box">
+                            <div class="description">Cloudy</div>
+                            <p><span class="temp">51</span><span class="symbol">℃</span></p>
+                        </div>
                     </div>
-                </div>
-                <div class="detail-box">
-                    <div>Humidity : <span class="humidity">60%</span></div>
-                    <div>Wind speed : <span class="wind">6.2 km/h</span></div>
-                </div>
-
-                <!-- <div class="logo-box">
-                    <a class="logo" href="https://www.erichoonshin.com/">Hn.</a>
-                </div> -->
+                    <div class="other-box">
+                        <label for="humidity">Humidity :</label>
+                        <p><span class="humidity" id="humidity">60</span><span class="symbol">%</span></p>
+                    </div>
+                    <div class="other-box">
+                        <label for="wind">Wind speed :</label>
+                        <p><span class="wind" id="wind">6.2</span><span class="symbol">km/h</span></p>
+                    </div>
+                </article>
             </div>
-        </div>
+        </main>
         <script src="./weatherApp.js"></script>
     </body>
 </html>

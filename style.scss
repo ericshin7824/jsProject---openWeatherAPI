@@ -99,22 +99,44 @@ $font-size-38: var(--font-size-40);
 }
 
 body {
-    background-color: #555;
-    background-image: url(./weatherAppBG.jpg);
+    background-color: #666;
+    background-image: url(./giorgio-parravicini-12IHVEFRacQ-unsplash.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-blend-mode: overlay;
     height: 100vh;
+    padding: var(--space-20);
 
     font-family: 'Montserrat', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+nav {
+    position: absolute;
+    left: var(--space-40);
+    bottom: calc(100% - var(--space-50));
+
+    height: var(--space-50);
+    width: var(--space-50);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .logo {
+        font-family: 'Poppins', sans-serif;
+        color: var(--primary-color-light);
+        font-size: var(--font-size-22);
+        font-weight: 800;
+        cursor: pointer;
+        text-decoration: none;
+    }
+}
 .card {
     background: rgba(0, 0, 0, 0.6);
-    padding: var(--space-20) var(--space-40);
+    padding: var(--space-20);
     color: var(--primary-color-light);
     border-radius: 25px;
 
@@ -125,9 +147,9 @@ body {
     box-shadow: 5px 10px 20px 0 rgba(0, 0, 0, 0.4);
 }
 .search {
-    background-color: rgba(75, 75, 75, 1);
+    background-color: rgba(75, 75, 75, 0.6);
     padding: var(--space-10);
-    border-radius: 25px;
+    border-radius: var(--space-30);
     font-size: var(--font-size-16);
     display: flex;
     align-items: center;
@@ -142,7 +164,7 @@ body {
     .search-bar {
         width: 100%;
         padding: var(--space-10) var(--space-20);
-        border-radius: var(--space-15);
+        border-radius: var(--space-30);
         color: var(--primary-color-dark);
     }
     button {
@@ -163,38 +185,75 @@ body {
     span {
         font-size: var(--font-size-12);
     }
+    h1,
+    span {
+        text-transform: uppercase;
+    }
 }
 
 .weather {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-20);
-    .weather-box,
-    .detail-box {
-        background-color: rgba(75, 75, 75, 0.6);
-        flex-basis: calc(100% - var(--space-10));
-        padding: var(--space-10);
-        border-radius: var(--space-15);
-        white-space: nowrap;
-        display: flex;
-        gap: var(--space-10);
+
+    .symbol {
+        font-size: var(--font-size-12);
+        margin-left: var(--space-5);
     }
-    .weather-box {
-        align-items: center;
-        justify-content: start;
-        .icon-box {
+
+    .detail-container {
+        flex-basis: 100%;
+        display: flex;
+        flex-direction: column;
+
+        gap: var(--space-20);
+
+        .weather-box,
+        .other-box {
+            white-space: nowrap;
+            flex: 1 1 100%;
+        }
+        .weather-box {
+            background-color: rgba(75, 75, 75, 0.6);
+            padding: var(--space-10);
+            border-radius: var(--space-15);
+
             display: flex;
-            align-items: flex-start;
-            flex-direction: column;
-            .description {
-                text-transform: capitalize;
+            align-items: center;
+            justify-content: start;
+            gap: var(--space-5);
+            .icon-box {
+                display: flex;
+                align-items: flex-start;
+                flex-direction: column;
+                gap: var(--space-5);
+                .description {
+                    text-transform: capitalize;
+                }
             }
         }
-    }
-    .detail-box {
-        padding: 20px;
-        align-items: flex-start;
-        flex-direction: column;
+        .other-box {
+            gap: var(--space-5);
+            flex-wrap: wrap;
+            display: flex;
+            align-items: center;
+            background-color: rgba(75, 75, 75, 0.6);
+            width: 100%;
+            padding: var(--space-10) var(--space-20);
+            border-radius: var(--space-15);
+            label {
+                width: 100%;
+                display: block;
+                font-size: var(--font-size-12);
+                text-transform: uppercase;
+                // margin-bottom: var(--space-5);
+            }
+            p {
+                span {
+                    display: inline-block;
+                }
+            }
+        }
     }
 
     &.loading {
@@ -211,16 +270,14 @@ body {
 }
 
 @media only screen and (max-width: 35rem) {
+    nav {
+        left: var(--space-20);
+    }
     .weather {
         .weather-box,
         .detail-box {
-            background-color: rgba(75, 75, 75, 0.6);
             flex-basis: calc(100% - var(--space-10));
             padding: var(--space-10);
-            border-radius: var(--space-15);
-            white-space: nowrap;
-            display: flex;
-            gap: var(--space-10);
         }
     }
 }
